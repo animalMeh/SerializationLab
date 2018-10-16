@@ -150,9 +150,7 @@ namespace Journal
 
         private void xMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //ArrayList ar = new ArrayList();
-            //ar.Add(teachers);
-            //ar.Add(subjects);
+           
             XmlSerializer format = new XmlSerializer(typeof(List<Model.Teacher>));
 
            
@@ -160,7 +158,7 @@ namespace Journal
             using (FileStream file = new FileStream("file.xml", FileMode.OpenOrCreate))
             {
                 format.Serialize(file, teachers);
-                //format2.Serialize(file, subjects);
+               
             }
         }
 
