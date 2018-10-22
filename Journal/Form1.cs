@@ -20,9 +20,9 @@ namespace Journal
     [Serializable]
     public partial class Form1 : Form
     {
-      
-        static public List<Model.Teacher> teachers = new List<Model.Teacher>();
-        static public List<Model.Subject> subjects = new List<Model.Subject>();
+
+        static public List<Model.Teacher> teachers;
+        static public List<Model.Subject> subjects;
         BindingSource bst = new BindingSource();
         BindingSource bss = new BindingSource();
        
@@ -30,18 +30,20 @@ namespace Journal
         public Form1()
         {
             InitializeComponent();
+          
             bst.DataSource = teachers;
             bss.DataSource = subjects;
             dataTeacher.DataSource = bst;
             dataSubject.DataSource = bss;
             bst.ResetBindings(true);
             bss.ResetBindings(true);
-            
+
         }
 
         private void addTich_Click(object sender, EventArgs e)
         {
-            
+            if(teachers == null)
+                teachers = new List<Model.Teacher>();
             if (Controller1.CorrectEnterance(tich.Text) && !Controller1.IsTeacherExsist(tich.Text , teachers))
             {
                 Controller1.AddTeacher(tich.Text, teachers);
@@ -53,10 +55,11 @@ namespace Journal
 
         private void addSub_Click(object sender, EventArgs e)
         {
+            if (subjects == null)
+                subjects = new List<Model.Subject>();
             if (Controller1.CorrectEnterance(sub.Text) && !Controller1.IsSubjectExsist(sub.Text, subjects))
             {
                 Controller1.AddSubject(sub.Text, subjects);
-                //  dataSubject.DataSource = subjects;
                 bss.DataSource = subjects;
                 bss.ResetBindings(true);
             }
@@ -65,6 +68,7 @@ namespace Journal
 
         private void dataTeacher_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
+
             MessageBox.Show("Удаляя преподавателя, он больше не может читать предметы");
             for (int i = 0; i < dataGridAll.RowCount; i++)
             {
@@ -116,16 +120,14 @@ namespace Journal
                 var teacher = dataTeacher.SelectedCells[0].Value.ToString();
                 var subject = dataSubject.SelectedCells[0].Value.ToString();
 
-                if (Controller1.GetTeacher(teacher, teachers).Teaching.Contains(Controller1.GetSubject(subject, subjects)))
-                { }
-                else
-                {
+                if (!Controller1.GetTeacher(teacher, teachers).Teaching.Contains(Controller1.GetSubject(subject, subjects)))
+                { 
                     Controller1.GetTeacher(teacher, teachers).AddSubject(
                     Controller1.GetSubject(subject, subjects));
                     dataGridAll.Rows.Add(teacher, subject);
                 }
             }
-            catch (Exception exc)
+            catch
             {
                 MessageBox.Show("Вы не выбрали Преподавателя или Предмет");
             }
@@ -144,36 +146,50 @@ namespace Journal
             BinaryFormatter bf = new BinaryFormatter();
             using (FileStream fs = new FileStream("binar.dat", FileMode.OpenOrCreate))
             {
-                ArrayList ar = new ArrayList();
-                ar.Add(teachers);
-                ar.Add(subjects);
+                ArrayList ar = new ArrayList
+                {
+                    teachers,
+                    subjects
+                };
                 bf.Serialize(fs, ar);
             }
         }
 
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            teachers.Clear();
-            subjects.Clear();
+            //teachers.Clear();
+            //subjects.Clear();
+
             using (FileStream fs = new FileStream("binar.dat", FileMode.OpenOrCreate))
             {
-
-                BinaryFormatter bf = new BinaryFormatter();
+            
+            BinaryFormatter bf = new BinaryFormatter();
                 
                 try
                 {
                     var s = (ArrayList)bf.Deserialize(fs);
                     teachers = (List<Model.Teacher>)s[0];
                     subjects = (List<Model.Subject>)s[1];
+                    
+                    bst.DataSource = teachers;
+                    bss.DataSource = subjects;
+                    dataTeacher.DataSource = bst;
+                    dataSubject.DataSource = bss;
                     bst.ResetBindings(true);
                     bss.ResetBindings(true);
+                    foreach(var t in teachers)
+                    {
+                       foreach(var sss in t.Teaching)
+                        {
+                            dataGridAll.Rows.Add(t.Name, sss.Name );
+                        }
+                    }
+
                 }
                 catch (Exception excep)
                 {
                     MessageBox.Show(excep.Message);
                 }
-               
-                //MessageBox.Show(teachers[0].Name);
             }
         }
     }

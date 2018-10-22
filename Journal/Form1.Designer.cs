@@ -1,4 +1,6 @@
-﻿namespace Journal
+﻿using System.Collections.Generic;
+
+namespace Journal
 {
     partial class Form1
     {
@@ -215,6 +217,11 @@
             this.binaryToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.binaryToolStripMenuItem.Text = "BINARY";
             this.binaryToolStripMenuItem.Click += new System.EventHandler(this.binaryToolStripMenuItem_Click);
+
+
+
+           
+
             // 
             // Form1
             // 

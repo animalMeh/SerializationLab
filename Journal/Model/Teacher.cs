@@ -10,14 +10,14 @@ namespace Journal.Model
     public class Teacher
     {
         public string Name { get; set; }
-        public List<Subject> Teaching = new List<Subject>();
+        public List<Subject> Teaching;
 
-        public Teacher()
-        { }
+        public Teacher() { Teaching = new List<Subject>(); }
 
         public Teacher(string Name)
         {
             this.Name = Name;
+            Teaching = new List<Subject>();
         }
        
         public void AddSubject(Subject s)
