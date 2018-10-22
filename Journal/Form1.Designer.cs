@@ -44,10 +44,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.серилизоватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sOAPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.binaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataTeacher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSubject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAll)).BeginInit();
@@ -207,41 +204,17 @@
             // серилизоватьToolStripMenuItem
             // 
             this.серилизоватьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xMLToolStripMenuItem,
-            this.sOAPToolStripMenuItem,
-            this.binaryToolStripMenuItem,
-            this.jSONToolStripMenuItem});
+            this.binaryToolStripMenuItem});
             this.серилизоватьToolStripMenuItem.Name = "серилизоватьToolStripMenuItem";
             this.серилизоватьToolStripMenuItem.Size = new System.Drawing.Size(146, 29);
             this.серилизоватьToolStripMenuItem.Text = "Cереализовать";
             // 
-            // xMLToolStripMenuItem
-            // 
-            this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
-            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(157, 30);
-            this.xMLToolStripMenuItem.Text = "XML";
-            this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
-            // 
-            // sOAPToolStripMenuItem
-            // 
-            this.sOAPToolStripMenuItem.Name = "sOAPToolStripMenuItem";
-            this.sOAPToolStripMenuItem.Size = new System.Drawing.Size(157, 30);
-            this.sOAPToolStripMenuItem.Text = "SOAP";
-            this.sOAPToolStripMenuItem.Click += new System.EventHandler(this.sOAPToolStripMenuItem_Click);
-            // 
             // binaryToolStripMenuItem
             // 
             this.binaryToolStripMenuItem.Name = "binaryToolStripMenuItem";
-            this.binaryToolStripMenuItem.Size = new System.Drawing.Size(157, 30);
+            this.binaryToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.binaryToolStripMenuItem.Text = "BINARY";
             this.binaryToolStripMenuItem.Click += new System.EventHandler(this.binaryToolStripMenuItem_Click);
-            // 
-            // jSONToolStripMenuItem
-            // 
-            this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
-            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(157, 30);
-            this.jSONToolStripMenuItem.Text = "JSON";
-            this.jSONToolStripMenuItem.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -294,10 +267,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem серилизоватьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem xMLToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sOAPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem binaryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem jSONToolStripMenuItem;
     }
 }
 

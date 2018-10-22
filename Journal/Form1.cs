@@ -39,16 +39,6 @@ namespace Journal
             
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void addTich_Click(object sender, EventArgs e)
         {
             
@@ -148,31 +138,6 @@ namespace Journal
             Controller1.GetTeacher(teacher, teachers).DropSubject(Controller1.GetSubject(subject, subjects));
         }
 
-        private void xMLToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           
-            XmlSerializer format = new XmlSerializer(typeof(List<Model.Teacher>));
-
-           
-
-            using (FileStream file = new FileStream("file.xml", FileMode.OpenOrCreate))
-            {
-                format.Serialize(file, teachers);
-               
-            }
-        }
-
-        private void sOAPToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SoapFormatter format = new SoapFormatter();
-            using (FileStream file = new FileStream("file.txt", FileMode.Create))
-            {
-                ArrayList ar = new ArrayList();
-                ar.Add(teachers);
-                ar.Add(subjects);
-                format.Serialize(file, ar.ToArray());
-            }
-        }
 
         private void binaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -184,11 +149,6 @@ namespace Journal
                 ar.Add(subjects);
                 bf.Serialize(fs, ar);
             }
-        }
-
-        private void jSONToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
