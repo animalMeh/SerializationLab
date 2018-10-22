@@ -153,12 +153,27 @@ namespace Journal
 
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            teachers.Clear();
+            subjects.Clear();
             using (FileStream fs = new FileStream("binar.dat", FileMode.OpenOrCreate))
             {
+
                 BinaryFormatter bf = new BinaryFormatter();
-                var s = (ArrayList)bf.Deserialize(fs);
-                teachers = (List<Model.Teacher>)s[0];
-                MessageBox.Show(teachers[0].Name);
+                
+                try
+                {
+                    var s = (ArrayList)bf.Deserialize(fs);
+                    teachers = (List<Model.Teacher>)s[0];
+                    subjects = (List<Model.Subject>)s[1];
+                    bst.ResetBindings(true);
+                    bss.ResetBindings(true);
+                }
+                catch (Exception excep)
+                {
+                    MessageBox.Show(excep.Message);
+                }
+               
+                //MessageBox.Show(teachers[0].Name);
             }
         }
     }

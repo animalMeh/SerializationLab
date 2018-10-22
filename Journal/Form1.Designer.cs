@@ -95,7 +95,7 @@
             this.label1.Size = new System.Drawing.Size(99, 26);
             this.label1.TabIndex = 3;
             this.label1.Text = "Предметы";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+          
             // 
             // addTich
             // 
@@ -238,7 +238,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataTeacher)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSubject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAll)).EndInit();
