@@ -3,16 +3,8 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization.Formatters.Soap;
-using System.Xml.Serialization;
 using System.IO;
-using System.Runtime.Serialization.Json;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Journal
 {
